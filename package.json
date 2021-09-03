@@ -1,0 +1,16 @@
+{
+  "name": "superajanda-server",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "prestart": "tsc",
+    "start": "node .",
+    "dev": "tsc-watch --onSuccess 'node .'"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.10",
+    "tsc-watch": "^4.5.0",
+    "typescript": "^4.4.2"
+  }
+}

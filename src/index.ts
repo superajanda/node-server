@@ -1,2 +1,3 @@
-const lang: string = "typescript";
-console.log(`hello ${lang}!`);
+import { NODE_ENV } from "./constants";
+
+console.log(`NODE_ENV: ${NODE_ENV}`);

@@ -8,7 +8,7 @@ generator client {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   email     String   @unique
   name      String
   createdAt DateTime @default(now())
@@ -16,27 +16,27 @@ model User {
 }
 
 model Note {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   title     String    @db.VarChar(255)
   content   String
   author    User      @relation(fields: [authorId], references: [id])
-  authorId  Int
+  authorId  String
   tags      NoteTag[]
 }
 
 model Tag {
-  id    Int       @id @default(autoincrement())
+  id    String    @id @default(uuid())
   name  String
   notes NoteTag[]
 }
 
 model NoteTag {
-  noteId Int
-  tagId  Int
-  note   Note @relation(fields: [noteId], references: [id])
-  tag    Tag  @relation(fields: [tagId], references: [id])
+  noteId String
+  tagId  String
+  note   Note   @relation(fields: [noteId], references: [id])
+  tag    Tag    @relation(fields: [tagId], references: [id])
 
   @@id([tagId, noteId])
 }

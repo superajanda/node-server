@@ -13,6 +13,7 @@ model User {
   name      String
   createdAt DateTime @default(now())
   notes     Note[]
+  tags      Tag[]
 }
 
 model Note {
@@ -27,9 +28,11 @@ model Note {
 }
 
 model Tag {
-  id    String    @id @default(uuid())
-  name  String
-  notes NoteTag[]
+  id       String    @id @default(uuid())
+  name     String
+  notes    NoteTag[]
+  authorId String
+  author   User      @relation(fields: [authorId], references: [id])
 }
 
 model NoteTag {

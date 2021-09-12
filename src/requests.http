@@ -1,0 +1,49 @@
+### Get all note metadata for current user
+GET http://localhost:4000/notes
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4
+
+### Get one note for current user
+GET http://localhost:4000/notes/6ead4dfa-32fe-4a4b-ac7a-7e679a66a10f
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4
+
+### Create a note for current user
+POST http://localhost:4000/notes
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4
+Content-Type: application/json
+
+{
+  "title": "Make SuperAjanda great again!"
+}
+
+### Update a note for current user
+PATCH http://localhost:4000/notes/fe4a9ecb-b3dd-4d23-971f-0927b24ef2c0
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4
+Content-Type: application/json
+
+{
+  "title": "Make Super Ajanda Great Again!",
+  "content": "# Make Super Ajanda Great Again!\n\n"
+}
+
+### Get all tags for current user
+GET http://localhost:4000/tags
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4
+
+### Get all users
+GET http://localhost:4000/users
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4
+
+### Create a user with custom id
+POST http://localhost:4000/users
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4
+Content-Type: application/json
+
+{
+  "email": "bayram@superajanda.com",
+  "name": "Bayram Kazık",
+  "id": "12aa24ff-4ad4-4c6e-942b-a849005512f4"
+}
+
+### Delete current user
+DELETE http://localhost:4000/users
+Authorization: Bearer 12aa24ff-4ad4-4c6e-942b-a849005512f4

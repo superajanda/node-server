@@ -12,4 +12,5 @@ export const ERROR_MESSAGES = {
   emptyRequestBody: `The received HTTP request body format is empty`,
   duplicateEmail: `The entered email address is already being used`,
   unknownError: `An unexpected error occured`,
+  unknownRoute: `Requested route not identified`
 };

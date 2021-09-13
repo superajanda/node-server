@@ -9,6 +9,6 @@ export const router = express.Router();
 router.use("/notes", notesRouter);
 router.use("/tags", tagsRouter);
 router.use("/users", usersRouter);
-router.use((req, res) => {
+router.use((_req, res) => {
   res.status(404).json({ message: ERROR_MESSAGES.unknownRoute });
 });

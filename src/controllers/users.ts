@@ -23,6 +23,7 @@ async function createUser(req: Request, res: Response): Promise<void> {
 
   if (!email || !name) {
     res.status(400).json({ message: ERROR_MESSAGES.invalidRequestBody });
+    return;
   }
 
   try {
@@ -44,6 +45,11 @@ async function deleteUser(req: Request, res: Response): Promise<void> {
       id: req.context.user.id,
     },
   });
+
+  if (!user) {
+    res.json({ message: ERROR_MESSAGES.invalidContentId });
+    return;
+  }
 
   res.json({ data: user });
 }

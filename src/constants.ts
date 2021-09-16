@@ -8,9 +8,10 @@ export const ERROR_MESSAGES = {
   noHttpAuthHeaderPrefix: `The HTTP header 'Authorization' doesn't have a known type as prefix`,
   invalidCredentials: `Your credentials couldn't verified`,
   invalidContentId: `Data with given ID argument couldn't found`,
+  duplicateContentId: `The requested ID argument is already being used`,
   invalidRequestBody: `The received HTTP request body format is invalid`,
   emptyRequestBody: `The received HTTP request body format is empty`,
   duplicateEmail: `The entered email address is already being used`,
   unknownError: `An unexpected error occured`,
-  unknownRoute: `Requested route not identified`
+  unknownRoute: `Requested route not identified`,
 };

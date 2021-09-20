@@ -2,19 +2,17 @@ import { prisma } from "../lib/prisma";
 import { Request, Response } from "express";
 import { ERROR_MESSAGES } from "../constants";
 
-const notesWithNestedTagsFilter = {
-  select: {
-    id: true,
-    title: true,
-    createdAt: true,
-    updatedAt: true,
-    tags: {
-      select: {
-        tag: {
-          select: {
-            id: true,
-            name: true,
-          },
+const notesWithNestedTagsSelect = {
+  id: true,
+  title: true,
+  createdAt: true,
+  updatedAt: true,
+  tags: {
+    select: {
+      tag: {
+        select: {
+          id: true,
+          name: true,
         },
       },
     },
@@ -56,7 +54,7 @@ async function getAllNoteMetadata(req: Request, res: Response): Promise<void> {
     where: {
       authorId: req.context.user.id,
     },
-    ...notesWithNestedTagsFilter,
+    select: notesWithNestedTagsSelect,
   });
 
   if (!notesWithNestedTags) {
@@ -79,7 +77,10 @@ async function getNote(req: Request, res: Response): Promise<void> {
 
   const noteWithNestedTags = await prisma.note.findUnique({
     where: { id },
-    ...notesWithNestedTagsFilter,
+    select: {
+      ...notesWithNestedTagsSelect,
+      content: true,
+    },
   });
 
   if (!noteWithNestedTags) {
@@ -123,7 +124,10 @@ async function updateNote(req: Request, res: Response): Promise<void> {
           })),
         },
       },
-      ...notesWithNestedTagsFilter,
+      select: {
+        ...notesWithNestedTagsSelect,
+        content: true,
+      },
     });
 
     if (!noteWithNestedTags) {
